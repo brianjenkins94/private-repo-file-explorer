@@ -234,7 +234,7 @@
 							if (!fileName.includes("/")) {
 								files.push(fileName);
 							} else {
-								fileName = fileName.substring(0, fileName.indexOf("/") - 1);
+								fileName = fileName.substring(0, fileName.indexOf("/"));
 
 								if (!folders.includes(fileName)) {
 									folders.push(fileName);
