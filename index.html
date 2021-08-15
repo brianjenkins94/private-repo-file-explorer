@@ -310,12 +310,10 @@
 						placeholder = "<%= " + placeholder + " %>";
 						const placeholderEncoded = "%3C%=%20" + placeholder + "%20%%3E";
 
-						const placeholderRegex = new RegExp("(?:" + [placeholder, placeholderEncoded].join(")|(?:") + ")");
+						const placeholderRegex = new RegExp("(?:" + [placeholder, placeholderEncoded].join(")|(?:") + ")", "g");
 
-						for (const attribute of ["href", "link"]) {
-							if (placeholderRegex.test(link[attribute])) {
-								link[attribute] = link[attribute].replace(placeholderRegex, value);
-							}
+						if (placeholderRegex.test(link.innerHTML)) {
+							link.innerHTML = link.innerHTML.replace(placeholderRegex, value);
 						}
 					}
 				}
