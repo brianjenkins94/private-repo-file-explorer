@@ -226,8 +226,20 @@
 					folders.push(...response["folders"]);
 				} else {
 					for (const file of tree) {
-						if (file.startsWith(location.hash.replace("#", "."))) {
-							console.log(file);
+						const basePath = location.hash.replace("#", ".");
+
+						if (file.startsWith(basePath)) {
+							let fileName = file.substring(basePath.length).includes("/");
+
+							if (!fileName.includes("/")) {
+								files.push(fileName);
+							} else {
+								fileName = fileName.substring(0, fileName.indexOf("/") - 1);
+
+								if (!folders.includes(fileName)) {
+									folders.push(fileName);
+								}
+							}
 						}
 					}
 				}
@@ -285,6 +297,27 @@
 
 			if (location.hostname.endsWith("github.io")) {
 				tree.push(...(await (await fetch(location.pathname + "/tree.txt")).text()).split("\n"));
+
+				const matches = location.href.replace(/\./g, "/").split("/");
+
+				const username = matches[2];
+				const repository = matches[5];
+
+				const links = document.body.querySelectorAll("[href]");
+
+				for (const link of links) {
+					for (const [placeholder, value] of Object.entries({ "username": username, "repository": repository })) {
+						if (link.href.includes("<%= " + placeholder + " %>")) {
+							link.href = link.href.replace("<%= " + placeholder + " %>", value);
+
+							if (link.textContent.includes("<%= " + placeholder + " %>")) {
+								link.textContent = link.textContent.replace("<%= " + placeholder + " %>", value);
+							}
+						}
+					}
+				}
+
+				console.log(document.body.innerHTML.match(/<%=/g));
 			}
 
 			if (!location.hash.startsWith("#/")) {
