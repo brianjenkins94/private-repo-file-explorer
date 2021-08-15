@@ -29,7 +29,7 @@ const packageJsonFile = path.join(process.cwd(), "package.json");
 if (fs.existsSync(packageJsonFile)) {
 	const parsedPackageJson = JSON.parse(fs.readFileSync(packageJsonFile, { "encoding": "utf8" }));
 
-	if (parsedPackageJson["repository"]?.["url"] !== undefined) {
+	if (parsedPackageJson?.["repository"]?.["url"] !== undefined) {
 		const matches = new URL(parsedPackageJson["repository"]["url"]).pathname.split("/");
 
 		username = matches[1];
@@ -45,7 +45,6 @@ const basePath = process.cwd();
 
 server.get("/", async function(request, response) {
 	response.send(await ejs.renderFile(path.join(__dirname, "index.html"), {
-		"baseDirectory": path.basename(basePath),
 		"username": username,
 		"repository": repository,
 		"description": description,
