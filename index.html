@@ -228,7 +228,7 @@
 
 				breadcrumbs = [breadcrumbs.join("<span class=\"mx-1\">/</span>")];
 
-				if (location.hash.endsWith("/")) {
+				if (location.hash !== "#/" && location.hash.endsWith("/")) {
 					breadcrumbs.push("<span class=\"mx-1\">/</span>");
 				}
 
