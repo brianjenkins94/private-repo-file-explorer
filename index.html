@@ -313,7 +313,9 @@
 
 						const placeholderRegex = new RegExp("(?:" + [placeholder, placeholderPercentEncoded, placeholderEntityEncoded].join(")|(?:") + ")", "g");
 
-						link.outerHTML = link.outerHTML.replace(placeholderRegex, value);
+						try {
+							link.outerHTML = link.outerHTML.replace(placeholderRegex, value);
+						} catch (error) { }
 					}
 				}
 
