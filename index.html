@@ -310,7 +310,7 @@
 						const placeholders = [
 							"<%= " + placeholder + " %>",
 							"%3C%=%20" + placeholder + "%20%%3E",
-							"&lt;%= " + placeholder + " %&gt;"
+							"%3C%25%3D%20" + placeholder + "%20%25%3E"
 						];
 
 						const placeholderRegex = new RegExp("(?:" + placeholders.join(")|(?:") + ")", "g");
