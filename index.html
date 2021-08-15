@@ -229,7 +229,7 @@
 						const basePath = location.hash.replace("#", ".");
 
 						if (file.startsWith(basePath)) {
-							let fileName = file.substring(basePath.length).includes("/");
+							let fileName = file.substring(basePath.length);
 
 							if (!fileName.includes("/")) {
 								files.push(fileName);
