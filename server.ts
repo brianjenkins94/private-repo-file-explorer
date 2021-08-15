@@ -46,10 +46,8 @@ const basePath = process.cwd();
 server.get("/", async function(request, response) {
 	response.send(await ejs.renderFile(path.join(__dirname, "index.html"), {
 		"username": username,
-		"repository": repository,
-		"description": description,
-		"hasReadme": fs.existsSync(path.join(basePath, "README.md")),
-		"hasLicense": fs.existsSync(path.join(basePath, "LICENSE"))
+		"repository": repository || path.basename(basePath),
+		"description": description
 	}));
 });
 

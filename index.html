@@ -180,7 +180,9 @@
 		</div>
 	</div>
 	<script>
-		document.addEventListener("DOMContentLoaded", function(event) {
+		document.addEventListener("DOMContentLoaded", async function(event) {
+
+			const tree = [];
 
 			window.addEventListener("hashchange", async function(event) {
 				if (location.hash.endsWith("..")) {
@@ -214,7 +216,21 @@
 					<span class="mx-1">/</span>
 				`;
 
-				const { files, folders } = await (await fetch(location.href.replace("#", "~"))).json();
+				const files = [];
+				const folders = [];
+
+				if (location.hostname === "localhost") {
+					const response = await (await fetch(location.href.replace("#", "~"))).json()
+
+					files.push(...response["files"]);
+					folders.push(...response["folders"]);
+				} else {
+					for (const file of tree) {
+						if (file.startsWith(location.hash.replace("#", "."))) {
+							console.log(file);
+						}
+					}
+				}
 
 				const buffer = [];
 
@@ -267,16 +283,14 @@
 				document.getElementById("files").innerHTML = buffer.join("\n");
 			});
 
+			if (location.hostname.endsWith("github.io")) {
+				tree = await (await fetch(location.pathname + "/tree.txt")).text().split("\n")
+			}
+
 			if (!location.hash.startsWith("#/")) {
 				location.replace(location.pathname + "#/");
 			} else {
 				window.dispatchEvent(new HashChangeEvent("hashchange"))
-			}
-
-			if (location.hostname === "localhost") {
-
-			} else if (location.hostname.endsWith("github.io")) {
-
 			}
 
 		});

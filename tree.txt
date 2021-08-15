@@ -1,0 +1,15 @@
+./index.html
+./.DS_Store
+./bootstrap
+./LICENSE
+./README.md
+./.gitignore
+./package-lock.json
+./package.json
+./tsconfig.json
+./.vscode/settings.json
+./.vscode/extensions.json
+./.vscode/launch.json
+./tree.txt
+./server.ts
+./.eslintrc.json
