@@ -311,7 +311,7 @@
 						const placeholderPercentEncoded = "%3C%=%20" + placeholder + "%20%%3E";
 						const placeholderEntityEncoded = "&lt;%= " + placeholder + " %&gt;"
 
-						const placeholderRegex = new RegExp("(?:" + [placeholder, placeholderEncoded, placeholderEntityEncoded].join(")|(?:") + ")", "g");
+						const placeholderRegex = new RegExp("(?:" + [placeholder, placeholderPercentEncoded, placeholderEntityEncoded].join(")|(?:") + ")", "g");
 
 						link.outerHTML = link.outerHTML.replace(placeholderRegex, value);
 					}
