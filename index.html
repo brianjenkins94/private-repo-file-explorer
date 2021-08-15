@@ -258,8 +258,8 @@
 	  				for (let x = 0; x < lines.length; x++) {
 						buffer.push(`
 							<tr>
-								<td id="L${x}" class="blob-num js-line-number" data-line-number="${x}"></td>
-								<td id="LC${x}" class="blob-code blob-code-inner js-file-line">${lines[x]}</td>
+								<td id="L${x + 1}" class="blob-num js-line-number" data-line-number="${x + 1}"></td>
+								<td id="LC${x + 1}" class="blob-code blob-code-inner js-file-line">${lines[x]}</td>
 							</tr>
 						`);
 					}
