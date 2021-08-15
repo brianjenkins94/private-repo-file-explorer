@@ -182,6 +182,8 @@
 	<script>
 		document.addEventListener("DOMContentLoaded", async function(event) {
 
+			const repository = "<%= repository =>";
+
 			const isLocal = location.hostname === "localhost";
 
 			const tree = [];
@@ -194,7 +196,7 @@
 				const breadcrumb = [`
 					<span class="js-path-segment d-inline-block wb-break-all">
 						<a data-pjax="#repo-content-pjax-container" href="#/">
-							<span>${isLocal ? "<%= repository %>" : location.href.replace(/\./g, "/").split("/")[5]}</span>
+							<span>${basePath}</span>
 						</a>
 					</span>
 				`];
@@ -303,7 +305,7 @@
 				const matches = location.href.replace(/\./g, "/").split("/");
 
 				const username = matches[2];
-				const repository = matches[5];
+				repository = matches[5];
 
 				const links = document.body.querySelectorAll("[href]");
 
