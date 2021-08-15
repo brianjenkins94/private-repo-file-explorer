@@ -44,13 +44,15 @@
 	<link rel="icon" class="js-site-favicon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xNiAwQzcuMTYgMCAwIDcuMTYgMCAxNkMwIDIzLjA4IDQuNTggMjkuMDYgMTAuOTQgMzEuMThDMTEuNzQgMzEuMzIgMTIuMDQgMzAuODQgMTIuMDQgMzAuNDJDMTIuMDQgMzAuMDQgMTIuMDIgMjguNzggMTIuMDIgMjcuNDRDOCAyOC4xOCA2Ljk2IDI2LjQ2IDYuNjQgMjUuNTZDNi40NiAyNS4xIDUuNjggMjMuNjggNSAyMy4zQzQuNDQgMjMgMy42NCAyMi4yNiA0Ljk4IDIyLjI0QzYuMjQgMjIuMjIgNy4xNCAyMy40IDcuNDQgMjMuODhDOC44OCAyNi4zIDExLjE4IDI1LjYyIDEyLjEgMjUuMkMxMi4yNCAyNC4xNiAxMi42NiAyMy40NiAxMy4xMiAyMy4wNkM5LjU2IDIyLjY2IDUuODQgMjEuMjggNS44NCAxNS4xNkM1Ljg0IDEzLjQyIDYuNDYgMTEuOTggNy40OCAxMC44NkM3LjMyIDEwLjQ2IDYuNzYgOC44MiA3LjY0IDYuNjJDNy42NCA2LjYyIDguOTggNi4yIDEyLjA0IDguMjZDMTMuMzIgNy45IDE0LjY4IDcuNzIgMTYuMDQgNy43MkMxNy40IDcuNzIgMTguNzYgNy45IDIwLjA0IDguMjZDMjMuMSA2LjE4IDI0LjQ0IDYuNjIgMjQuNDQgNi42MkMyNS4zMiA4LjgyIDI0Ljc2IDEwLjQ2IDI0LjYgMTAuODZDMjUuNjIgMTEuOTggMjYuMjQgMTMuNCAyNi4yNCAxNS4xNkMyNi4yNCAyMS4zIDIyLjUgMjIuNjYgMTguOTQgMjMuMDZDMTkuNTIgMjMuNTYgMjAuMDIgMjQuNTIgMjAuMDIgMjYuMDJDMjAuMDIgMjguMTYgMjAgMjkuODggMjAgMzAuNDJDMjAgMzAuODQgMjAuMyAzMS4zNCAyMS4xIDMxLjE4QzI3LjQyIDI5LjA2IDMyIDIzLjA2IDMyIDE2QzMyIDcuMTYgMjQuODQgMCAxNiAwVjBaIiBmaWxsPSIjMjQyOTJFIi8+Cjwvc3ZnPgo=">
 	<meta name="theme-color" content="#1e2327">
 	<meta name="color-scheme" content="light dark">
+	<!-- Libraries -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/github.min.css" />
 	<style>
-		.file-navigation span:nth-last-child(2) a {
+		.file-navigation .js-path-segment:last-child a {
 			color: #24292e;
 			font-weight: 600;
 			pointer-events: none;
 		}
-		.file-navigation span:first-child a {
+		.file-navigation .js-path-segment:first-child a {
 			color: #0366d6;
 			font-weight: 600;
 			pointer-events: auto;
@@ -64,7 +66,7 @@
 	</style>
 </head>
 <body class="logged-out env-production page-responsive intent-mouse" style="word-wrap: break-word;">
-	<div class="application-main ">
+	<div class="application-main">
 		<div itemscope="" itemtype="http://schema.org/SoftwareSourceCode">
 			<main id="js-repo-pjax-container">
 				<div id="repository-container-header" class="hx_page-header-bg pt-3 hide-full-screen mb-5">
@@ -121,7 +123,7 @@
 					</nav>
 				</div>
 				<div class="container-xl clearfix new-discussion-timeline px-3 px-md-4 px-lg-5">
-					<div id="repo-content-pjax-container" class="repository-content ">
+					<div id="repo-content-pjax-container" class="repository-content">
 						<div>
 							<div class="gutter-condensed gutter-lg flex-column flex-md-row d-flex">
 								<div class="flex-shrink-0 col-12 col-md-9 mb-4 mb-md-0">
@@ -176,9 +178,10 @@
 		</div>
 	</div>
 	<div class="footer container-xl width-full p-responsive" role="contentinfo">
-		<div class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between pt-6 pb-2 mt-6 f6 color-text-secondary border-top color-border-secondary ">
-		</div>
+		<div class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between pt-6 pb-2 mt-6 f6 color-text-secondary border-top color-border-secondary"></div>
 	</div>
+	<!-- Libraries -->
+	<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/highlight.min.js"></script>
 	<script>
 		document.addEventListener("DOMContentLoaded", async function(event) {
 
@@ -191,9 +194,11 @@
 			window.addEventListener("hashchange", async function(event) {
 				if (location.hash.endsWith("..")) {
 					location.hash = location.hash.replace(/[^\/]*\/..$/, "");
+
+					return;
 				}
 
-				const breadcrumb = [`
+				let breadcrumbs = [`
 					<span class="js-path-segment d-inline-block wb-break-all">
 						<a data-pjax="#repo-content-pjax-container" href="#/">
 							<span>${repository}</span>
@@ -208,7 +213,7 @@
 				for (const directory of location.hash.substring(1).match(/([^/]+)/g) || []) {
 					partialPath += "/" + directory;
 
-					breadcrumb.push(`
+					breadcrumbs.push(`
 						<span class="js-path-segment d-inline-block wb-break-all">
 							<a data-pjax="#repo-content-pjax-container" href="#${partialPath}/">
 								<span>${directory}</span>
@@ -221,10 +226,54 @@
 
 				document.title = lastBreadcrumb;
 
-				document.getElementById("breadcrumb").innerHTML = `
-					${breadcrumb.join("<span class=\"mx-1\">/</span>")}
-					<span class="mx-1">/</span>
-				`;
+				breadcrumbs = [breadcrumbs.join("<span class=\"mx-1\">/</span>")];
+
+				if (location.hash.endsWith("/")) {
+					breadcrumbs.push("<span class=\"mx-1\">/</span>");
+				}
+
+				document.getElementById("breadcrumb").innerHTML = breadcrumbs.join("\n");
+
+				if (!location.hash.endsWith("/")) {
+					document.getElementById("files").innerHTML = `
+						<div role="row" class="Box-header Box-row--focus-gray p-0 pr-2 d-flex flex-shrink-0 flex-md-row flex-items-center js-navigation-item">
+							<div role="rowheader" class="flex-auto min-width-0 col-md-2">
+								<a rel="nofollow" title="Go to parent directory" class="js-navigation-open d-block py-2 px-3" href="${location.hash}/..">
+									<span class="text-bold text-center d-inline-block" style="min-width: 16px;">. .</span>
+								</a>
+							</div>
+							<div class="d-flex py-1 py-md-0 flex-auto flex-order-1 flex-md-order-2 flex-sm-grow-0 flex-justify-between">
+								<div class="BtnGroup">
+									<a href="${location.hash.substring(2)}" id="raw-url" role="button" data-view-component="true" class="btn-sm btn BtnGroup-item"> Raw </a>
+								</div>
+							</div>
+						</div>
+						<div id="code" itemprop="text" class="Box-body p-0 blob-wrapper data type-html gist-border-0"></div>
+					`;
+
+					const buffer = [];
+
+	  				const lines = hljs.highlightAuto(await (await fetch(location.hash.substring(2))).text()).value.split("\n");
+
+	  				for (let x = 0; x < lines.length; x++) {
+						buffer.push(`
+							<tr>
+								<td id="L${x}" class="blob-num js-line-number" data-line-number="${x}"></td>
+								<td id="LC${x}" class="blob-code blob-code-inner js-file-line">${lines[x]}</td>
+							</tr>
+						`);
+					}
+
+					document.getElementById("code").innerHTML = `
+	  					<table>
+							<tbody>
+								${buffer.join("\n")}
+							</tbody>
+						</table>
+					`;
+
+					return;
+				}
 
 				const files = [];
 				const folders = [];
@@ -256,7 +305,7 @@
 
 				const buffer = [];
 
-				if (breadcrumb.length > 1) {
+				if (breadcrumbs.length > 1) {
 					buffer.push(`
 						<div role="row" class="Box-row Box-row--focus-gray p-0 d-flex js-navigation-item">
 							<div role="rowheader" class="flex-auto min-width-0 col-md-2">
@@ -294,7 +343,7 @@
 								</svg>
 							</div>
 							<div role="rowheader" class="flex-auto min-width-0 col-md-2 mr-3">
-								<span class="css-truncate css-truncate-target d-block width-fit"><a class="js-navigation-open Link--primary" title="${file}" href="${location.hash.substring(2) + file}">${file}</a></span>
+								<span class="css-truncate css-truncate-target d-block width-fit"><a class="js-navigation-open Link--primary" title="${file}" href="${location.hash + file}">${file}</a></span>
 							</div>
 							<div role="gridcell" class="d-none d-md-block"></div>
 							<div role="gridcell"></div>
