@@ -2,7 +2,7 @@
 
 # private-repo-file-explorer
 
-> Share a private repo as if it were a public repo though GitHub Pages.
+> Share a private repo as if it were a public repo.
 
 <table>
     <thead>
@@ -42,7 +42,7 @@ npx brianjenkins94/serve
     find . -type f -not -path "./.git/**" -not -path "./node_modules/**" > tree.txt
     ```
 
-    The files listed in `tree.txt` will be served up by GitHub Pages.
+    The files listed in `tree.txt` will be navigable through the explorer.
 
 That's it!
 
