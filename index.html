@@ -307,7 +307,7 @@
 
 				for (const link of links) {
 					for (let [placeholder, value] of Object.entries({ "username": username, "repository": repository })) {
-						placeholder = "%3C%= " + placeholder + " %%3E";
+						placeholder = "%3C%=%20" + placeholder + "%20%%3E";
 
 						if (link.href.includes(placeholder)) {
 							link.href = link.href.replace(placeholder, value);
