@@ -313,9 +313,9 @@
 
 						const placeholderRegex = new RegExp("(?:" + [placeholder, placeholderPercentEncoded, placeholderEntityEncoded].join(")|(?:") + ")", "g");
 
-						try {
-							link.outerHTML = link.outerHTML.replace(placeholderRegex, value);
-						} catch (error) { }
+						for (const attribute of ["href", "textContent"]) {
+							link[attribute] = link[attribute].replace(placeholderRegex, value);
+						}
 					}
 				}
 
