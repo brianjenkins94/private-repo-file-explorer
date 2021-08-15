@@ -306,7 +306,7 @@
 				const links = document.body.querySelectorAll("[href]");
 
 				for (const link of links) {
-					for (const [placeholder, value] of Object.entries({ "username": username, "repository": repository })) {
+					for (let [placeholder, value] of Object.entries({ "username": username, "repository": repository })) {
 						placeholder = encodeURIComponent("<%= " + placeholder + " %>");
 
 						if (link.href.includes(placeholder)) {
