@@ -14,7 +14,7 @@
         <tr>
             <td>
                 <ol>
-                    <li><a href="#try-it">Try it! Started</a></li>
+                    <li><a href="#try-it">Try it!</a></li>
                     <li><a href="#how-can-i-add-it-to-my-repo">How can I add it to my repo?</a></li>
                     <li><a href="#license">License</a></li>
                 </ol>
@@ -36,11 +36,13 @@ npx brianjenkins94/serve
 #### How can I add it to my repo?
 
 1.  Copy [index.html](https://github.com/brianjenkins94/private-repo-project-explorer/blob/main/index.html) to your [GitHub Pages source folder](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
-2.  Run something like:
+2.  Create a `tree.txt`:
 
     ```bash
     find . -type f -not -path "./.git/**" -not -path "./node_modules/**" > tree.txt
     ```
+
+    The files listed in `tree.txt` will be served up by GitHub Pages.
 
 That's it!
 
