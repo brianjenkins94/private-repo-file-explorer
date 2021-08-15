@@ -307,13 +307,14 @@
 
 				for (const link of links) {
 					for (let [placeholder, value] of Object.entries({ "username": username, "repository": repository })) {
-						placeholder = "%3C%=%20" + placeholder + "%20%%3E";
+						placeholder = "<%= " + placeholder + " %>";
+						const placeholderEncoded = "%3C%=%20" + placeholder + "%20%%3E";
 
-						if (link.href.includes(placeholder)) {
-							link.href = link.href.replace(placeholder, value);
+						const placeholderRegex = new RegExp("(?:" + [placeholder, placeholderEncoded].join(")|(?:") + ")");
 
-							if (link.textContent.includes(placeholder)) {
-								link.textContent = link.textContent.replace(placeholder, value);
+						for (const attribute of ["href", "link"]) {
+							if (placeholderRegex.test(link[attribute])) {
+								link[attribute] = link[attribute].replace(placeholderRegex, value);
 							}
 						}
 					}
@@ -325,7 +326,7 @@
 			if (!location.hash.startsWith("#/")) {
 				location.replace(location.pathname + "#/");
 			} else {
-				window.dispatchEvent(new HashChangeEvent("hashchange"))
+				window.dispatchEvent(new HashChangeEvent("hashchange"));
 			}
 
 		});
