@@ -1,3 +1,8 @@
 #!/usr/bin/env node
 
-console.log("test");
+require("ts-node").register({
+	"ignore": [/\.js/],
+	...require("./tsconfig.json")
+});
+
+require("./server");

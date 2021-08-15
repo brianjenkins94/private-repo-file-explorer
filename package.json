@@ -4,7 +4,6 @@
   "description": "",
   "bin": "bootstrap",
   "scripts": {
-    "build": "rollup --config --watch",
     "serve": "nodemon --watch \"**/*.ts\" --exec ts-node server.ts",
     "tree": "find . -mindepth 1 -not -path \"./.git/**\" -not -path \"./node_modules/**\" > tree.txt",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,5 +17,24 @@
   "bugs": {
     "url": "https://github.com/brianjenkins94/private-repo-file-explorer/issues"
   },
-  "homepage": "https://github.com/brianjenkins94/private-repo-file-explorer#readme"
+  "homepage": "https://github.com/brianjenkins94/private-repo-file-explorer#readme",
+  "dependencies": {
+    "@types/node": "latest",
+    "ejs": "latest",
+    "express": "latest",
+    "helmet": "latest",
+    "morgan": "latest",
+    "nodemon": "latest",
+    "portfinder": "^1.0.28",
+    "ts-node": "latest",
+    "typescript": "latest"
+  },
+  "devDependencies": {
+    "@types/ejs": "latest",
+    "@types/express": "latest",
+    "@types/morgan": "latest",
+    "@typescript-eslint/eslint-plugin": "latest",
+    "@typescript-eslint/parser": "latest",
+    "eslint": "latest"
+  }
 }
