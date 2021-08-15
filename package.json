@@ -1,0 +1,19 @@
+{
+  "name": "private-repo-file-explorer",
+  "version": "1.0.0",
+  "description": "",
+  "bin": "bootstrap",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brianjenkins94/private-repo-file-explorer.git"
+  },
+  "author": "Brian Jenkins",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brianjenkins94/private-repo-file-explorer/issues"
+  },
+  "homepage": "https://github.com/brianjenkins94/private-repo-file-explorer#readme"
+}
