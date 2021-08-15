@@ -8,6 +8,7 @@ import ejs from "ejs";
 import express from "express";
 import helmet from "helmet";
 import logger from "morgan";
+import open from "open";
 
 const server = express();
 
@@ -28,7 +29,7 @@ const packageJsonFile = path.join(process.cwd(), "package.json");
 if (fs.existsSync(packageJsonFile)) {
 	const parsedPackageJson = JSON.parse(fs.readFileSync(packageJsonFile, { "encoding": "utf8" }));
 
-	if (parsedPackageJson["repository"]["url"] !== undefined) {
+	if (parsedPackageJson["repository"]?.["url"] !== undefined) {
 		const matches = new URL(parsedPackageJson["repository"]["url"]).pathname.split("/");
 
 		username = matches[1];
@@ -40,17 +41,21 @@ if (fs.existsSync(packageJsonFile)) {
 	}
 }
 
+const basePath = process.cwd();
+
 server.get("/", async function(request, response) {
 	response.send(await ejs.renderFile(path.join(__dirname, "index.html"), {
+		"baseDirectory": path.basename(basePath),
 		"username": username,
 		"repository": repository,
-		"description": description
+		"description": description,
+		"hasReadme": fs.existsSync(path.join(basePath, "README.md")),
+		"hasLicense": fs.existsSync(path.join(basePath, "LICENSE"))
 	}));
 });
 
 server.get("*", function(request, response, next) {
-	const basePath = process.cwd();
-	const fullPath = path.join(basePath, unescape(request.path));
+	const fullPath = path.join(basePath, unescape(request.path.replace("/~", "")));
 
 	if (path.resolve(fullPath).startsWith(basePath)) {
 		if (fs.existsSync(fullPath)) {
@@ -58,7 +63,7 @@ server.get("*", function(request, response, next) {
 				response.sendFile(fullPath);
 			} else if (!(fullPath.endsWith("/") || fullPath.endsWith("\\"))) {
 				response.redirect(request.path + "/");
-			} else {
+			} else if (request.path.startsWith("/~/")) {
 				const files = [];
 				const folders = [];
 
@@ -91,6 +96,10 @@ portFinder.getPort(function(error, port) {
 	}
 
 	server.listen(port, function() {
-		console.log("Listening on http://localhost:" + this.address().port + "/");
+		const url = "http://localhost:" + this.address().port + "/";
+
+		console.log("Listening on " + url);
+
+		open(url);
 	});
 });

@@ -25,7 +25,8 @@
     "helmet": "latest",
     "morgan": "latest",
     "nodemon": "latest",
-    "portfinder": "^1.0.28",
+    "open": "latest",
+    "portfinder": "latest",
     "ts-node": "latest",
     "typescript": "latest"
   },

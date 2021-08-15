@@ -112,10 +112,10 @@
 					<nav aria-label="Repository" class="js-repo-nav js-sidenav-container-pjax js-responsive-underlinenav overflow-hidden UnderlineNav px-3 px-md-4 px-lg-5">
 						<ul class="UnderlineNav-body list-style-none">
 							<li class="d-flex">
-								<a id="code-tab" href="#" aria-current="page" class="UnderlineNav-item hx_underlinenav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item selected">
+								<a id="code-tab" href="#/" aria-current="page" class="UnderlineNav-item hx_underlinenav-item no-wrap js-responsive-underlinenav-item js-selected-navigation-item selected">
 									<svg class="octicon octicon-code UnderlineNav-octicon d-none d-sm-inline" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
 										<path fill-rule="evenodd" d="M4.72 3.22a.75.75 0 011.06 1.06L2.06 8l3.72 3.72a.75.75 0 11-1.06 1.06L.47 8.53a.75.75 0 010-1.06l4.25-4.25zm6.56 0a.75.75 0 10-1.06 1.06L13.94 8l-3.72 3.72a.75.75 0 101.06 1.06l4.25-4.25a.75.75 0 000-1.06l-4.25-4.25z"></path>
-									</svg><span>Code</span><span title="Not available" class="Counter"></span></a>
+									</svg><span>Code</span></a>
 							</li>
 						</ul>
 					</nav>
@@ -183,18 +183,22 @@
 		document.addEventListener("DOMContentLoaded", function(event) {
 
 			window.addEventListener("hashchange", async function(event) {
+				if (location.hash.endsWith("..")) {
+					location.hash = location.hash.replace(/[^\/]*\/..$/, "");
+				}
+
 				const breadcrumb = [`
 					<span class="js-path-segment d-inline-block wb-break-all">
 						<a data-pjax="#repo-content-pjax-container" href="#/">
-							<span>basePath</span>
+							<span><%= baseDirectory %></span>
 						</a>
 					</span>
 				`];
 
-				let partialPath = "/";
+				let partialPath = "";
 
 				for (const directory of location.hash.substring(1).match(/([^/]+)/g) || []) {
-					partialPath = partialPath + directory;
+					partialPath += "/" + directory;
 
 					breadcrumb.push(`
 						<span class="js-path-segment d-inline-block wb-break-all">
@@ -210,7 +214,7 @@
 					<span class="mx-1">/</span>
 				`;
 
-				const { files, folders } = await (await fetch(location.href.replace("#", ""))).json();
+				const { files, folders } = await (await fetch(location.href.replace("#", "~"))).json();
 
 				const buffer = [];
 
@@ -218,7 +222,7 @@
 					buffer.push(`
 						<div role="row" class="Box-row Box-row--focus-gray p-0 d-flex js-navigation-item">
 							<div role="rowheader" class="flex-auto min-width-0 col-md-2">
-								<a rel="nofollow" title="Go to parent directory" class="js-navigation-open d-block py-2 px-3" href="${location.hash.replace(/\/.*\/$/, "/")}">
+								<a rel="nofollow" title="Go to parent directory" class="js-navigation-open d-block py-2 px-3" href="${location.hash}..">
 									<span class="text-bold text-center d-inline-block" style="min-width: 16px;">. .</span>
 								</a>
 							</div>
@@ -263,12 +267,14 @@
 				document.getElementById("files").innerHTML = buffer.join("\n");
 			});
 
-			if (location.hostname === "localhost") {
-				if (!location.hash.startsWith("#/")) {
-					location.replace(location.pathname + "#/");
-				}
-
+			if (!location.hash.startsWith("#/")) {
+				location.replace(location.pathname + "#/");
+			} else {
 				window.dispatchEvent(new HashChangeEvent("hashchange"))
+			}
+
+			if (location.hostname === "localhost") {
+
 			} else if (location.hostname.endsWith("github.io")) {
 
 			}
