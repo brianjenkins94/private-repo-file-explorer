@@ -308,9 +308,10 @@
 				for (const link of links) {
 					for (let [placeholder, value] of Object.entries({ "username": username, "repository": repository })) {
 						placeholder = "<%= " + placeholder + " %>";
-						const placeholderEncoded = "%3C%=%20" + placeholder + "%20%%3E";
+						const placeholderPercentEncoded = "%3C%=%20" + placeholder + "%20%%3E";
+						const placeholderEntityEncoded = "&lt;%= " + placeholder + " %&gt;"
 
-						const placeholderRegex = new RegExp("(?:" + [placeholder, placeholderEncoded].join(")|(?:") + ")", "g");
+						const placeholderRegex = new RegExp("(?:" + [placeholder, placeholderEncoded, placeholderEntityEncoded].join(")|(?:") + ")", "g");
 
 						link.outerHTML = link.outerHTML.replace(placeholderRegex, value);
 					}
