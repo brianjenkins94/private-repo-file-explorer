@@ -284,7 +284,7 @@
 			});
 
 			if (location.hostname.endsWith("github.io")) {
-				tree = await (await fetch(location.pathname + "/tree.txt")).text().split("\n")
+				tree = (await (await fetch(location.pathname + "/tree.txt")).text()).split("\n")
 			}
 
 			if (!location.hash.startsWith("#/")) {
