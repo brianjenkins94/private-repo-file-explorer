@@ -33,7 +33,7 @@ or serve a local directory:
 npx brianjenkins94/serve
 ```
 
-#### How can I add it to my repo?
+### How can I add it to my repo?
 
 1.  Copy [index.html](https://github.com/brianjenkins94/private-repo-file-explorer/blob/main/index.html) to your [GitHub Pages source folder](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
 2.  Create a `tree.txt`:
