@@ -312,9 +312,7 @@
 
 						const placeholderRegex = new RegExp("(?:" + [placeholder, placeholderEncoded].join(")|(?:") + ")", "g");
 
-						if (placeholderRegex.test(link.innerHTML)) {
-							link.innerHTML = link.innerHTML.replace(placeholderRegex, value);
-						}
+						link.outerHTML = link.outerHTML.replace(placeholderRegex, value);
 					}
 				}
 
