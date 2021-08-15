@@ -307,7 +307,7 @@
 
 				for (const link of links) {
 					for (let [placeholder, value] of Object.entries({ "username": username, "repository": repository })) {
-						placeholder = encodeURIComponent("<%= " + placeholder + " %>");
+						placeholder = encodeURI("<%= " + placeholder + " %>");
 
 						if (link.href.includes(placeholder)) {
 							link.href = link.href.replace(placeholder, value);
