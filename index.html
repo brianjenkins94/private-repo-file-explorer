@@ -307,11 +307,13 @@
 
 				for (const link of links) {
 					for (const [placeholder, value] of Object.entries({ "username": username, "repository": repository })) {
-						if (link.href.includes("<%= " + placeholder + " %>")) {
-							link.href = link.href.replace("<%= " + placeholder + " %>", value);
+						placeholder = encodeURIComponent("<%= " + placeholder + " %>");
 
-							if (link.textContent.includes("<%= " + placeholder + " %>")) {
-								link.textContent = link.textContent.replace("<%= " + placeholder + " %>", value);
+						if (link.href.includes(placeholder)) {
+							link.href = link.href.replace(placeholder, value);
+
+							if (link.textContent.includes(placeholder)) {
+								link.textContent = link.textContent.replace(placeholder, value);
 							}
 						}
 					}
