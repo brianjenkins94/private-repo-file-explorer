@@ -1,0 +1,114 @@
+{
+	"env": {
+		"browser": true,
+		"es6": true,
+		"node": true
+	},
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"project": "./tsconfig.json"
+	},
+	"plugins": ["@typescript-eslint"],
+	"extends": [
+		// Baseline ruleset
+		"eslint:all",
+
+		// Disable rules that are incompatible with or better handled by TypeScript
+		"plugin:@typescript-eslint/eslint-recommended",
+
+		// Turn on TypeScript-specific rules
+		"plugin:@typescript-eslint/all"
+	],
+	"rules": {
+		// Configured
+		"@typescript-eslint/indent": ["warn", "tab"], // Indent using tabs
+		"@typescript-eslint/no-misused-promises": ["warn", { "checksVoidReturn": false }], // No promises in conditionals
+		"@typescript-eslint/object-curly-spacing": ["warn", "always", { "arraysInObjects": false }], // Objects should always be padded with spaces
+		"@typescript-eslint/space-before-function-paren": ["warn", { "anonymous": "never", "named": "never", "asyncArrow": "always" }], // No space before function parentheses, except for async arrow
+		"array-bracket-newline": ["warn", "consistent"], // Per-array consistent formatting
+		"array-element-newline": ["warn", "consistent"], // Per-array consistent formatting
+		"dot-location": ["warn", "property"], // Dot on the next line for chained functions
+		"func-style": ["warn", "declaration"], // Declaration over expression
+		"function-call-argument-newline": ["warn", "never"], // No line breaks between arguments
+		"no-multiple-empty-lines": ["warn", { "max": 1, "maxEOF": 1, "maxBOF": 0 }], // No multiple consecutive blank lines
+		"no-plusplus": ["warn", { "allowForLoopAfterthoughts": true }], // No increment/decrement operator, except for in `for` loops
+		"no-tabs": ["warn", { "allowIndentationTabs": true }], // No tabs, excluding indentation
+		"object-property-newline": ["warn", { "allowAllPropertiesOnSameLine": true }], // Per-object consistent formatting
+		"operator-linebreak": ["warn", "before"], // Operator on the next line for lengthy conditions
+		"quotes": ["warn", "double", { "allowTemplateLiterals": true }], // Prefer double-quotes, allow template strings
+		"wrap-iife": ["warn", "inside"], // Parentheses after IIFEs
+
+		// Warn
+		"@typescript-eslint/no-extra-parens": "warn",
+		"@typescript-eslint/no-shadow": "warn",
+		"@typescript-eslint/no-unused-vars": "warn",
+		"max-params": "warn",
+		"no-empty": "warn",
+		"no-lonely-if": "warn",
+		"no-param-reassign": "warn",
+		"sort-keys": "warn",
+
+		// Disabled
+		"@typescript-eslint/dot-notation": "off",
+		"@typescript-eslint/explicit-function-return-type": "off",
+		"@typescript-eslint/explicit-module-boundary-types": "off",
+		"@typescript-eslint/init-declarations": "off",
+		"@typescript-eslint/lines-between-class-members": "off",
+		"@typescript-eslint/no-dynamic-delete": "off",
+		"@typescript-eslint/no-floating-promises": "off",
+		"@typescript-eslint/no-magic-numbers": "off",
+		"@typescript-eslint/no-unnecessary-condition": "off", // requires `strictNullChecks`
+		"@typescript-eslint/no-unsafe-assignment": "off",
+		"@typescript-eslint/no-unsafe-call": "off",
+		"@typescript-eslint/no-unsafe-member-access": "off",
+		"@typescript-eslint/no-unsafe-return": "off",
+		"@typescript-eslint/prefer-readonly-parameter-types": "off",
+		"@typescript-eslint/promise-function-async": "off",
+		"@typescript-eslint/require-array-sort-compare": "off",
+		"@typescript-eslint/restrict-plus-operands": "off",
+		"@typescript-eslint/strict-boolean-expressions": "off", // requires `strictNullChecks`
+		"@typescript-eslint/typedef": "off",
+		"capitalized-comments": "off",
+		"class-methods-use-this": "off",
+		"dot-notation": "off",
+		"func-names": "off",
+		"id-length": "off",
+		"init-declarations": "off",
+		"line-comment-position": "off",
+		"linebreak-style": "off",
+		"lines-between-class-members": "off",
+		"max-classes-per-file": "off",
+		"max-len": "off",
+		"max-lines-per-function": "off",
+		"max-lines": "off",
+		"max-statements": "off",
+		"multiline-comment-style": "off",
+		"multiline-ternary": "off",
+		"newline-per-chained-call": "off",
+		"no-async-promise-executor": "off",
+		"no-await-in-loop": "off",
+		"no-case-declarations": "off",
+		"no-console": "off",
+		"no-else-return": "off",
+		"no-fallthrough": "off",
+		"no-inline-comments": "off",
+		"no-inner-declarations": "off",
+		"no-invalid-this": "off",
+		"no-negated-condition": "off",
+		"no-process-exit": "off",
+		"no-sync": "off",
+		"no-ternary": "off",
+		"no-undefined": "off",
+		"no-warning-comments": "off",
+		"object-shorthand": "off",
+		"one-var": "off",
+		"padded-blocks": "off",
+		"prefer-arrow-callback": "off",
+		"prefer-named-capture-group": "off",
+		"prefer-template": "off",
+		"require-unicode-regexp": "off",
+		"sort-imports": "off",
+		"spaced-comment": "off",
+		"wrap-regex": "off"
+	}
+}
