@@ -228,7 +228,7 @@
 
 				breadcrumbs = [breadcrumbs.join("<span class=\"mx-1\">/</span>")];
 
-				if (location.hash !== "#/" && location.hash.endsWith("/")) {
+				if (location.hash.endsWith("/")) {
 					breadcrumbs.push("<span class=\"mx-1\">/</span>");
 				}
 
@@ -305,7 +305,7 @@
 
 				const buffer = [];
 
-				if (breadcrumbs.length > 1) {
+				if (location.hash !== "#/") {
 					buffer.push(`
 						<div role="row" class="Box-row Box-row--focus-gray p-0 d-flex js-navigation-item">
 							<div role="rowheader" class="flex-auto min-width-0 col-md-2">
