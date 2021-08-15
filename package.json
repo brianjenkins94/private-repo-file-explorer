@@ -4,7 +4,6 @@
   "description": "",
   "bin": "bootstrap",
   "scripts": {
-    "build": "rollup --config --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
