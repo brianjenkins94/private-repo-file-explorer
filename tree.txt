@@ -1,9 +1,7 @@
 ./index.html
-./.DS_Store
 ./bootstrap
 ./LICENSE
 ./README.md
-./.gitignore
 ./package-lock.json
 ./package.json
 ./foo/bar/baz/test.txt
@@ -13,4 +11,3 @@
 ./.vscode/launch.json
 ./tree.txt
 ./server.ts
-./.eslintrc.json

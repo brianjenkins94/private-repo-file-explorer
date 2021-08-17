@@ -39,7 +39,7 @@ npx brianjenkins94/serve
 2.  Create a `tree.txt`:
 
     ```bash
-    find . -type f -not -path "./.git/**" -not -path "./node_modules/**" > tree.txt
+    find . -type f -not -name ".*" -not -path "./.git/**" -not -path "./node_modules/**" > tree.txt
     ```
 
     The files listed in `tree.txt` will be navigable through the file explorer.
