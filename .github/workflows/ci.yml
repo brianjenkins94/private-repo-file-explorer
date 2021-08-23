@@ -1,0 +1,9 @@
+name: ci
+on: [push]
+jobs:
+    lint:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - run: npm install eslint typescript @typescript-eslint/eslint-plugin @typescript-eslint/parser
+            - run: npx eslint --ignore-pattern "public/**/*" --quiet "**/*.ts"
