@@ -8,12 +8,11 @@
 	"editor.formatOnSave": false,
 	"files.insertFinalNewline": true,
 	"files.trimTrailingWhitespace": true,
-	"html.format.wrapLineLength": 0,
 	"javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
 	"javascript.format.insertSpaceBeforeFunctionParenthesis": false,
 	"remark.format.rules": {
 		"fences": true
 	},
 	"typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
-	"typescript.format.insertSpaceBeforeFunctionParenthesis": false,
+	"typescript.format.insertSpaceBeforeFunctionParenthesis": false
 }
