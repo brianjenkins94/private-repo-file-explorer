@@ -2,12 +2,8 @@
 ./bootstrap
 ./LICENSE
 ./README.md
-./package-lock.json
 ./package.json
 ./foo/bar/baz/test.txt
 ./tsconfig.json
-./.vscode/settings.json
-./.vscode/extensions.json
-./.vscode/launch.json
 ./tree.txt
 ./server.ts
